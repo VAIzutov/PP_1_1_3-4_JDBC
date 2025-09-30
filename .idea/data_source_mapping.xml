@@ -2,5 +2,6 @@
 <project version="4">
   <component name="DataSourcePerFileMappings">
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/1896bffb-c103-4ff5-a77e-3dca3e06eb57/console.sql" value="1896bffb-c103-4ff5-a77e-3dca3e06eb57" />
+    <file url="file://$PROJECT_DIR$/src/main/java/jm/task/core/jdbc/dao/UserDaoJDBCImpl.java" value="1896bffb-c103-4ff5-a77e-3dca3e06eb57" />
   </component>
 </project>

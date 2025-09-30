@@ -18,7 +18,7 @@ public class UserDaoJDBCImpl implements UserDao {
      */
     public void createUsersTable() {
         try (Connection connection = Util.getConnection();
-                Statement statement = connection.createStatement()) {
+             Statement statement = connection.createStatement()) {
             String createTable = """
                     CREATE TABLE IF NOT EXISTS users (
                         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -50,9 +50,10 @@ public class UserDaoJDBCImpl implements UserDao {
 
     /**
      * Добавление user-a в БД
-     * @param name - имя
+     *
+     * @param name     - имя
      * @param lastName - фамилия
-     * @param age - возраст
+     * @param age      - возраст
      */
     public void saveUser(String name, String lastName, byte age) {
         String querySQL = "INSERT INTO users(name, lastname, age) VALUES (?, ?, ?)";
@@ -69,6 +70,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     /**
      * Удаление user-a из БД
+     *
      * @param id - ключ пользователя
      */
     public void removeUserById(long id) {
@@ -84,7 +86,8 @@ public class UserDaoJDBCImpl implements UserDao {
 
     /**
      * Возвращает всех пользователей из БД
-     * @return список пользователей
+     *
+     * @return - список пользователей
      */
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
@@ -94,7 +97,7 @@ public class UserDaoJDBCImpl implements UserDao {
                     SELECT * FROM users;
                     """;
             ResultSet resultSet = statement.executeQuery(getAll);
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 User user = new User();
                 user.setId((long) resultSet.getInt(1));
                 user.setName(resultSet.getString(2));

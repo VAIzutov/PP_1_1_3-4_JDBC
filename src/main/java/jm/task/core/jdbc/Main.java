@@ -6,6 +6,7 @@ import jm.task.core.jdbc.util.Util;
 
 public class Main {
     public static void main(String[] args) {
+        Util.getConnection();
         UserService userDaoService = new UserServiceImpl();
 
         userDaoService.createUsersTable();
@@ -19,7 +20,5 @@ public class Main {
         userDaoService.getAllUsers();
         userDaoService.cleanUsersTable();
         userDaoService.dropUsersTable();
-
-        Util.getSessionFactory().close();
     }
 }

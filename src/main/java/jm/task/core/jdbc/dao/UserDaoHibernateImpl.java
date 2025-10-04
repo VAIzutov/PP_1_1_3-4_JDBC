@@ -123,15 +123,14 @@ public class UserDaoHibernateImpl implements UserDao {
     }
 
     /**
-     * Очистка таблицы в БД. Рука тянулась сделать sql запрос c TRUNCATE, но в задании это было запрещено
+     * Очистка таблицы в БД.
      */
     @Override
     public void cleanUsersTable() {
         try (Session session = Util.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             try {
-                List<User> users = session.createQuery("from User", User.class).getResultList();
-                for (User user : users) session.remove(user);
+                session.createQuery("delete User").executeUpdate();
                 transaction.commit();
             } catch (Exception e) {
                 transaction.rollback();
